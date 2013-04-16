@@ -107,8 +107,7 @@ int main(void) {
 	TACCR0 = TIMERA_FREQ;                    // frame rate
 	TACCTL1 = OUTMOD_3;                      // set/reset
 	TACCTL2 = OUTMOD_3;
-	__bis_SR(LPM0_bits+GIE);       //interrupts enabled
-
+	_BIS_SR(LPM0_bits+GIE);       //interrupts enabled
 	while(1){
 	}
 
@@ -123,7 +122,7 @@ __interrupt void TIMERA0_ISR(void)
 	   else{
 		   TACCR1 = TIMERA_FREQ - SERVO_LEFT;
 	   }
-	   __bic_SR(LPM0_EXIT);//Clear CPUOFF bit from 0(SR)
+	   _BIS_SR(LPM0_EXIT);//Clear CPUOFF bit from 0(SR)
 } // end TIMERA0_ISR
 
 #pragma vector = TIMERA1_VECTOR
@@ -135,7 +134,7 @@ __interrupt void TIMERA1_ISR(void)
 	   else{
 		   TACCR2 = TIMERA_FREQ - SERVO_LEFT;
 	   }
-	   __bic_SR(LPM0_EXIT);//Clear CPUOFF bit from 0(SR)
+	   _BIS_SR(LPM0_EXIT);//Clear CPUOFF bit from 0(SR)
 } // end TIMERA1_ISR
 
 #pragma vector = TIMERB0_VECTOR
@@ -147,7 +146,7 @@ __interrupt void TIMERB0_ISR(void)
 	   else{
 		   TBCCR1 = TIMERB_FREQ - SERVO_LEFT;
 	   }
-	   __bic_SR(LPM0_EXIT);//Clear CPUOFF bit from 0(SR)
+	   _BIS_SR(LPM0_EXIT);//Clear CPUOFF bit from 0(SR)
 } // end TIMERB0_ISR
 
 #pragma vector = TIMERB1_VECTOR
@@ -159,7 +158,7 @@ __interrupt void TIMERB1_ISR(void)
 	   else{
 		   TBCCR2 = TIMERB_FREQ - SERVO_LEFT;
 	   }
-	   __bic_SR(LPM0_EXIT);//Clear CPUOFF bit from 0(SR)
+	   _BIS_SR(LPM0_EXIT);//Clear CPUOFF bit from 0(SR)
 } // end TIMERB1_ISR
 
 
